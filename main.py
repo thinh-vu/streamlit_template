@@ -21,11 +21,11 @@ def tcbs_screener(query, limit=1700):
     screener_df = stock_screening_insights (query, size=limit, drop_lang='en')
     return screener_df
 
-# def pygwalker_part (df):
-#     # Initialize pygwalker communication
-#     init_streamlit_comm()
-#     renderer = StreamlitRenderer(df, spec="./gw_config.json", debug=False)
-#     renderer.render_explore()
+def pygwalker_part (df):
+    # Initialize pygwalker communication
+    init_streamlit_comm()
+    renderer = StreamlitRenderer(df, spec="./gw_config.json", debug=False)
+    renderer.render_explore()
 
 # Define the content of each tab
 with screener:
@@ -53,8 +53,6 @@ with screener:
 
     # st.markdown('## Khám phá')
     # pygwalker_part (screener_df)
-
-
 
 
 with help:

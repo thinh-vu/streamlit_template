@@ -1,3 +1,3 @@
 vnstock
-streamlit
+bs4
 # pygwalker
