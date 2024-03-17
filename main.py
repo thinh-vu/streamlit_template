@@ -1,5 +1,6 @@
 import streamlit as st
 import json
+from pygwalker.api.streamlit import StreamlitRenderer, init_streamlit_comm
 from vnstock import *
 
 # start with wide mode
@@ -19,6 +20,12 @@ default_query = {"exchangeName": "HOSE,HNX,UPCOM",
 def tcbs_screener(query, limit=1700):
     screener_df = stock_screening_insights (query, size=limit, drop_lang='en')
     return screener_df
+
+def pygwalker_part (df):
+    # Initialize pygwalker communication
+    init_streamlit_comm()
+    renderer = StreamlitRenderer(df, spec="./gw_config.json", debug=False)
+    renderer.render_explore()
 
 # Define the content of each tab
 with screener:
@@ -43,6 +50,11 @@ with screener:
     screener_df = tcbs_screener(query, limit)
     # show the result in a table
     st.write(screener_df)
+
+    st.markdown('## Khám phá')
+    pygwalker_part (screener_df)
+
+
 
 
 with help:
@@ -74,8 +86,6 @@ with credit:
     * Tác giả: [Thinh Vu](https://thinhvu.com) @ vnstock.site
     * Email: support@vnstock.site
     * Website: [vnstock.site](https://vnstock.site)
-    * Bạn có thể gửi tặng tác giả Cafe qua QR thay lời cảm ơn:
-     ![momo QR](https://docs.vnstock.site/assets/images/momo_qr_all_in_one.jpg?raw=true)
-    
+    * Bạn có thể gửi tặng tác giả Cafe qua QR thay lời cảm ơn. Chi tiết [tại đây](https://docs.vnstock.site/community/tai-tro-du-an-vnstock/)    
     """
     st.markdown(credit_details)
