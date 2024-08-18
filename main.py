@@ -6,7 +6,7 @@ from vnstock import *
 # start with wide mode
 st.set_page_config(layout="wide")
 
-st.image('https://vnstock.site/wp-content/uploads/2023/07/vnstock-logo-120x60.jpg', width=120)
+st.image('https://vnstocks.com/img/vnstock_logo_trans_rec_hoz.png', width=120)
 st.header("Thư viện mẫu Streamlit Web App cho người mới bắt đầu")
 
 # Create 3 tabs
